@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    let restaurants = ["Дастархан", "Bonsai", "Burger Heroes", "Kitchen"]
+    let place = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +20,22 @@ class MainViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restaurants.count
+        return place.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
-        cell.nameOfPlace.text = restaurants[indexPath.row]
-        cell.imageOfPlace.image = UIImage(named: restaurants[indexPath.row])
-        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
-        cell.imageOfPlace.clipsToBounds = true
+        cell.nameOfPlaces.text = place[indexPath.row].name
         
+        cell.imageOfPlaces.image = UIImage(named: place[indexPath.row].image)
+        cell.imageOfPlaces.layer.cornerRadius = cell.imageOfPlaces.frame.size.height / 2
+        cell.imageOfPlaces.clipsToBounds = true
+        
+        cell.locationOfPlaces.text = place[indexPath.row].location
+        cell.typeOfPlaces.text = place[indexPath.row].type
+       
         return cell
     }
     
@@ -82,5 +86,5 @@ class MainViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func cancelAction (_ segue: UIStoryboardSegue) {}
 }

@@ -9,9 +9,9 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var imageOfPlace: UIImageView!
-    @IBOutlet weak var nameOfPlace: UILabel!
-    @IBOutlet weak var locationOfPlace: UILabel!
-    @IBOutlet weak var typeOfPlace: UILabel!
+    @IBOutlet weak var imageOfPlaces: UIImageView!
+    @IBOutlet weak var nameOfPlaces: UILabel!
+    @IBOutlet weak var locationOfPlaces: UILabel!
+    @IBOutlet weak var typeOfPlaces: UILabel!
     
 }
