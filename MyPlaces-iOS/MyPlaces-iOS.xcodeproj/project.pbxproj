@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE41C0C42A8970B600FA02D7 /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41C0C32A8970B600FA02D7 /* NewPlaceTableViewController.swift */; };
 		CE9EBF562A86E19100B06875 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EBF552A86E19100B06875 /* CustomTableViewCell.swift */; };
 		CEC1B0E42A863BBE00F4C191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1B0E32A863BBE00F4C191 /* AppDelegate.swift */; };
 		CEC1B0E62A863BBE00F4C191 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1B0E52A863BBE00F4C191 /* SceneDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE41C0C32A8970B600FA02D7 /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = "<group>"; };
 		CE9EBF552A86E19100B06875 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CEC1B0E02A863BBE00F4C191 /* MyPlaces-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyPlaces-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC1B0E32A863BBE00F4C191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				CEC1B0E32A863BBE00F4C191 /* AppDelegate.swift */,
 				CEC1B0E52A863BBE00F4C191 /* SceneDelegate.swift */,
 				CEC1B0F72A863C6600F4C191 /* MainViewController.swift */,
+				CE41C0C32A8970B600FA02D7 /* NewPlaceTableViewController.swift */,
 				CEC308432A87737100E568C3 /* ModelPlaces.swift */,
 				CE9EBF552A86E19100B06875 /* CustomTableViewCell.swift */,
 				CEC1B0E92A863BBE00F4C191 /* Main.storyboard */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE41C0C42A8970B600FA02D7 /* NewPlaceTableViewController.swift in Sources */,
 				CEC1B0F82A863C6600F4C191 /* MainViewController.swift in Sources */,
 				CEC1B0E42A863BBE00F4C191 /* AppDelegate.swift in Sources */,
 				CEC308442A87737100E568C3 /* ModelPlaces.swift in Sources */,
