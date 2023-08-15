@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="My places" id="NDg-8I-5ch">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hGQ-IC-c1K">
                             <connections>
-                                <segue destination="fq0-4A-m7p" kind="show" id="7Zf-rI-LdW"/>
+                                <segue destination="fq0-4A-m7p" kind="show" id="mnz-8N-HN8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -238,13 +238,21 @@
                     <navigationItem key="navigationItem" title="New Place" id="jbz-ah-pN1">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s6b-Cc-7P9">
                             <connections>
-                                <segue destination="OS0-Kg-yJo" kind="unwind" unwindAction="cancelAction:" id="ZGa-60-3Rc"/>
+                                <action selector="cancelAction:" destination="fq0-4A-m7p" id="IyY-ZW-GQG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XXy-Bm-j2p"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XXy-Bm-j2p">
+                            <connections>
+                                <segue destination="OS0-Kg-yJo" kind="unwind" unwindAction="savePlace:" id="Dsr-3M-n4x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="placeImage" destination="Juw-Sn-jaL" id="yy1-QJ-7Ao"/>
+                        <outlet property="placeLocation" destination="2tJ-Pl-0TQ" id="MEY-Qf-WXy"/>
+                        <outlet property="placeName" destination="x43-SN-Ax4" id="meb-Dj-Zqt"/>
+                        <outlet property="placeType" destination="BSo-8j-beg" id="6fG-pM-wTo"/>
+                        <outlet property="saveButton" destination="XXy-Bm-j2p" id="Rfq-QT-RZm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ro3-Y7-34w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -274,7 +282,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Jvq-mt-uyF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mpg-DK-DiM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Mpg-DK-DiM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oot-VU-qjB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sVK-US-ZkC">
@@ -291,11 +299,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HB3-qK-8c5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="-165"/>
+            <point key="canvasLocation" x="1280" y="-165"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NPR-Tm-kEb"/>
+        <segue reference="mnz-8N-HN8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
