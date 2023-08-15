@@ -9,7 +9,15 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
 
+    var place: Place?
+    var imageIsChanged = false
+    
     @IBOutlet weak var placeImage: UIImageView!
+    @IBOutlet weak var placeName: UITextField!
+    @IBOutlet weak var placeLocation: UITextField!
+    @IBOutlet weak var placeType: UITextField!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,8 +25,15 @@ class NewPlaceTableViewController: UITableViewController {
         self.tableView.estimatedSectionHeaderHeight = 0
         self.tableView.estimatedSectionFooterHeight = 0
         
+        saveButton.isEnabled = false
+        placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
 
+    //go back to previous VC
+    @IBAction func cancelAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     //Mark: Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
@@ -44,11 +59,27 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
-
+    public func saveNewPlace() {
+        
+        let image: UIImage?
+        
+        if imageIsChanged {
+            image = placeImage.image
+        } else {
+            image = #imageLiteral(resourceName: "imagePlaceholder")
+        }
+        
+        place = Place(restaurantImage: nil,
+                      image: image,
+                      name: placeName.text! ,
+                      location: placeLocation.text,
+                      type: placeType.text)
+    }
 }
 
-//Mark: text field extension
 
+
+//MARK: text field extension
 extension NewPlaceTableViewController: UITextFieldDelegate {
     
     //hide keyboard on click "Done"
@@ -56,9 +87,19 @@ extension NewPlaceTableViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    @objc private func textFieldChanged() {
+        if placeName.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+    }
+    
     }
 
-//Mark: Work with image
+
+//MARK: Work with image
 extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker (source: UIImagePickerController.SourceType) {
@@ -67,6 +108,7 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = source
+            imageIsChanged = true
             present(imagePicker, animated: true)
         }
     }

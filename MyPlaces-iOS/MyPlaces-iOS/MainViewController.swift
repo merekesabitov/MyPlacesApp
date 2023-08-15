@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    let place = Place.getPlaces()
+    var place = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +27,21 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
-        cell.nameOfPlaces.text = place[indexPath.row].name
+        let places = place[indexPath.row]
         
-        cell.imageOfPlaces.image = UIImage(named: place[indexPath.row].image)
+        cell.nameOfPlaces.text = places.name
+        
+        if places.image == nil {
+            cell.imageOfPlaces.image = UIImage(named: places.restaurantImage!)
+        } else {
+            cell.imageOfPlaces.image = places.image
+        }
+        
         cell.imageOfPlaces.layer.cornerRadius = cell.imageOfPlaces.frame.size.height / 2
         cell.imageOfPlaces.clipsToBounds = true
         
-        cell.locationOfPlaces.text = place[indexPath.row].location
-        cell.typeOfPlaces.text = place[indexPath.row].type
+        cell.locationOfPlaces.text = places.location
+        cell.typeOfPlaces.text = places.type
        
         return cell
     }
@@ -42,40 +49,7 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         85
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
 
     /*
     // MARK: - Navigation
@@ -86,5 +60,11 @@ class MainViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func cancelAction (_ segue: UIStoryboardSegue) {}
+    @IBAction func savePlace (_ segue: UIStoryboardSegue) {
+        guard let newPlaceVC = segue.source as? NewPlaceTableViewController else { return }
+        
+        newPlaceVC.saveNewPlace()
+        place.append(newPlaceVC.place!)
+        tableView.reloadData()
+    }
 }
